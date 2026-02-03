@@ -72,12 +72,12 @@ def file_hash = Digest::SHA256.file('/tmp/icon.png').hexdigest
 
 def upload_to_cdn(url)
   resp = Net::HTTP.post(
-    URI.parse("https://cdn.hackclub.com/api/v3/new"),
-    [url].to_json,
+    URI.parse("https://cdn.hackclub.com/api/v4/upload_from_url"),
+    { url: }.to_json,
     {
-      'content-type' => 'application/json',
-      'authorization' => 'Bearer beans'
+      'Content-Type' => 'application/json',
+      'Authorization' => "Bearer #{ENV['HACKCLUB_CDN_API_KEY']}"
     }
   ).body
-  JSON.parse(resp).dig("files", 0, "deployedUrl")
+  JSON.parse(resp)["url"]
 end

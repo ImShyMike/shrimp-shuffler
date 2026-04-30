@@ -28,7 +28,7 @@ task :fetch_community_icon do
   Poster.logo(logo)
 end
 
-desc 'change the slack icon to /tmp/icon.png'
+desc 'change the slack icon to the current logo'
 task :update_slack do
   seed_random
   # Poster.log [
@@ -48,7 +48,7 @@ task :update_slack do
       'uh oh, we got a problem....',
       'oh no!',
       'whoops!'
-    ].sample + " hey <@U06QK6AG3RD>: #{e.message}! maybe you need to rotate your xoxd?"
+    ].sample + " hey <@U06QK6AG3RD>: #{e.message}! seems like the bot token stopped working?"
   end
 end
 

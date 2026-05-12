@@ -10,8 +10,6 @@ gem "rake", "~> 13.2"
 
 gem "slack-notifier", "~> 2.4"
 
-gem "mechanize", "~> 2.14"
-
 gem "sinatra", "~> 4.2"
 
 gem "activesupport", "~> 8.0"

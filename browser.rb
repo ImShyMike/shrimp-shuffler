@@ -10,11 +10,7 @@ def set_icon(image_url)
   uri = URI(API_SET_ICON_URL)
   req = Net::HTTP::Post.new(uri)
   req['Authorization'] = "Bearer #{token}"
-  req['Content-Type'] = 'application/json; charset=utf-8'
-  req.body = {
-    team_id: team_id,
-    image_url: image_url
-  }.to_json
+  req.set_form_data(team_id:, image_url:)
 
   response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
     http.request(req)

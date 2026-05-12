@@ -10,6 +10,7 @@ end
 def fetch_and_set_icon(logo)
   logo.download_icon_and_cdn!
   set_icon logo.cdn_url
+  Config.get.patch('current' => logo.cdn_url)
 end
 
 desc "set the ysws thing"

@@ -77,7 +77,6 @@ get '/' do
 end
 
 get "/api/current" do
-  fetch_logos single: true
   content_type :plaintext
-  @current_logo.cdn_url || @current_logo.icon_url
+  Config.refresh['current']
 end
